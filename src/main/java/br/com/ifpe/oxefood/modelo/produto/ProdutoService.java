@@ -29,4 +29,17 @@ public class ProdutoService {
 
         return repository.findById(id).get();
     }
+
+    public void update(Long id, Produto produtoAnterior){
+
+        Produto produto = repository.findById(id).get();
+        produto.setCodigo(produtoAnterior.getCodigo());
+        produto.setTitulo(produtoAnterior.getTitulo());
+        produto.setDescricao(produtoAnterior.getDescricao());
+        produto.setValorUnitario(produtoAnterior.getValorUnitario());
+        produto.setTempoEntregaMinimo(produtoAnterior.getTempoEntregaMinimo());
+        produto.setTempoEntregaMaximo(produtoAnterior.getTempoEntregaMaximo());
+
+        repository.save(produto);
+    }
 }
