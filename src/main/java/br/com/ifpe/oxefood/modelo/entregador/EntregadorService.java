@@ -28,15 +28,31 @@ public class EntregadorService {
   
         return repository.findAll();
     }
+ 
+  @Transactional
+   public void update(Long id, Entregador entregadorAlterado) {
 
-    public Entregador obterPorID(Long id) {
+      Entregador entregador = repository.findById(id).get();
+      entregador.setNome(entregadorAlterado.getNome());
+      entregador.setDataNascimento(entregadorAlterado.getDataNascimento());
+      entregador.setCpf(entregadorAlterado.getCpf());
+      entregador.setFoneCelular(entregadorAlterado.getFoneCelular());
+      entregador.setFoneFixo(entregadorAlterado.getFoneFixo());
+      entregador.setRg(entregadorAlterado.getRg());
+      entregador.setQtdEntregas(entregadorAlterado.getQtdEntregas());
+      entregador.setValorFrete(entregadorAlterado.getValorFrete());
+      entregador.setRua(entregadorAlterado.getRua());
+      entregador.setNumero(entregadorAlterado.getNumero());
+      entregador.setBairro(entregador.getBairro());
+      entregador.setCidade(entregadorAlterado.getCidade());
+      entregador.setCep(entregadorAlterado.getCep());
+      entregador.setUf(entregadorAlterado.getUf());
+      entregador.setComplemento(entregadorAlterado.getComplemento());
+	    
+      repository.save(entregador);
+  }
 
-        return repository.findById(id).get();
-    }
-
-
-
-
+   
 
 }
 
