@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -41,6 +43,13 @@ public class EntregadorController {
     @GetMapping("/{id}")
     public Entregador obterPorID(@PathVariable Long id) {
         return entregadorService.obterPorID(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Entregador> alterar(@PathVariable Long id, @RequestBody EntregadorRequest request) {
+        
+        entregadorService.update(id, request.build());
+        return ResponseEntity.ok().build();
     }
     
 }
