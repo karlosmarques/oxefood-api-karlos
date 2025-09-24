@@ -9,19 +9,19 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class ClienteService {
-    
+
     @Autowired
-   private ClienteRepository repository;
+    private ClienteRepository repository;
 
-   @Transactional
-   public Cliente save(Cliente cliente) {
+    @Transactional
+    public Cliente save(Cliente cliente) {
 
-       cliente.setHabilitado(Boolean.TRUE);
-       return repository.save(cliente);
-   }
+        cliente.setHabilitado(Boolean.TRUE);
+        return repository.save(cliente);
+    }
 
-   public List<Cliente> listarTodos() {
-  
+    public List<Cliente> listarTodos() {
+
         return repository.findAll();
     }
 
@@ -30,5 +30,17 @@ public class ClienteService {
         return repository.findById(id).get();
     }
 
+    @Transactional
+    public void update(Long id, Cliente clienteAlterado) {
+
+        Cliente cliente = repository.findById(id).get();
+        cliente.setNome(clienteAlterado.getNome());
+        cliente.setDataNascimento(clienteAlterado.getDataNascimento());
+        cliente.setCpf(clienteAlterado.getCpf());
+        cliente.setFoneCelular(clienteAlterado.getFoneCelular());
+        cliente.setFoneFixo(clienteAlterado.getFoneFixo());
+
+        repository.save(cliente);
+    }
 
 }
