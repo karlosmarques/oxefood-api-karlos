@@ -30,15 +30,14 @@ public class CategoriaProdutoController {
     private CategoriaProdutoService categoriaProdutoService;
 
     @PostMapping
-    public ResponseEntity<CategoriaProduto> save(@RequestBody CategoriaProdutoRequest request) {
+    public ResponseEntity<CategoriaProduto> save (@RequestBody CategoriaProdutoRequest request){
 
-    CategoriaProduto categoriaProdutoNovo = request.build();
-    CategoriaProduto categoriaProduto = categoriaProdutoService.save(categoriaProdutoNovo);
+       CategoriaProduto categoriaProdutoNovo = request.build();
+       CategoriaProduto categoriaProduto = categoriaProdutoService.save(categoriaProdutoNovo);
 
-    return new ResponseEntity<>(categoriaProduto, HttpStatus.CREATED);
-}
-
-
+       return new ResponseEntity<CategoriaProduto>(categoriaProduto, HttpStatus.CREATED);
+    }
+    
 
     @GetMapping // listagem
     public List<CategoriaProduto> listarTodos() {
@@ -50,18 +49,14 @@ public class CategoriaProdutoController {
         return categoriaProdutoService.obterPorID(id);
     }
 
-@PutMapping("/{id}")
-public ResponseEntity<CategoriaProduto> update(
-        @PathVariable("id") Long id,
-        @RequestBody CategoriaProdutoRequest request) {
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoriaProduto> update(@PathVariable("id") Long id, @RequestBody CategoriaProdutoRequest request) {
 
     CategoriaProduto categoriaProduto = request.build();
     categoriaProdutoService.update(id, categoriaProduto);
 
     return ResponseEntity.ok().build();
-}
-
-
+ }
 
  @DeleteMapping("/{id}") // requisição tipo delete passando o id
     public ResponseEntity<Void> delete(@PathVariable Long id) {
