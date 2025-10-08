@@ -2,31 +2,38 @@ package br.com.ifpe.oxefood.modelo.cliente;
 
 import java.time.LocalDate;
 
+import java.util.List;
+import org.hibernate.annotations.SQLRestriction;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import jakarta.persistence.Table;
 import br.com.ifpe.oxefood.util.entity.EntidadeAuditavel;
 import jakarta.persistence.Column;
-import org.hibernate.annotations.SQLRestriction;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
 @Entity
-@Table(name = "Cliente") //nome da tabela no banco
-@SQLRestriction("habilitado = true") //filtrar os registros para aparecer só os que estao habilitados como true
+@Table(name = "Cliente") // sera criado uma tabela msm nome da classe
+@SQLRestriction("habilitado = true") // serve para filtrar o registro da entidade
 @Builder
 @Getter
 @Setter
+@CrossOrigin
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cliente extends EntidadeAuditavel  {
-  
 
-    @Column
+    @OneToMany(mappedBy = "cliente", orphanRemoval = true, fetch = FetchType.EAGER)
+   private List<EnderecoCliente> enderecos;
+
+  
+   @Column // determinar que esse atributo é coluna
    private String nome;
 
    @Column
@@ -42,3 +49,4 @@ public class Cliente extends EntidadeAuditavel  {
    private String foneFixo;
 
 }
+
