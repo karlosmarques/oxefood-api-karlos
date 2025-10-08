@@ -1,14 +1,11 @@
 package br.com.ifpe.oxefood.modelo.entregador;
 
-import jakarta.transaction.Transactional;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import br.com.ifpe.oxefood.modelo.cliente.Cliente;
-import br.com.ifpe.oxefood.modelo.entregador.Entregador;
+import jakarta.transaction.Transactional;
 
 
 
@@ -39,7 +36,7 @@ public class EntregadorService {
       entregador.setFoneCelular(entregadorAlterado.getFoneCelular());
       entregador.setFoneFixo(entregadorAlterado.getFoneFixo());
       entregador.setRg(entregadorAlterado.getRg());
-      entregador.setQtdEntregas(entregadorAlterado.getQtdEntregas());
+      entregador.setQtdEntregasRealizadas(entregadorAlterado.getQtdEntregasRealizadas());
       entregador.setValorFrete(entregadorAlterado.getValorFrete());
       entregador.setRua(entregadorAlterado.getRua());
       entregador.setNumero(entregadorAlterado.getNumero());
@@ -51,6 +48,14 @@ public class EntregadorService {
 	    
       repository.save(entregador);
   }
+@Transactional
+   public void delete(Long id) {
+
+       Entregador entregador = repository.findById(id).get();
+       entregador.setHabilitado(Boolean.FALSE);
+
+       repository.save(entregador);
+   }
 
    
 

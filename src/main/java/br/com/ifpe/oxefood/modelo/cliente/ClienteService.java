@@ -4,7 +4,8 @@ import jakarta.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import br.com.ifpe.oxefood.modelo.cliente.EnderecoClienteRepository;
+import br.com.ifpe.oxefood.modelo.cliente.EnderecoCliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.Getter;
@@ -15,13 +16,13 @@ import lombok.Setter;
 @Service
 public class ClienteService {
 
-   @Autowired 
+   @Autowired // injetar uma depedencia auto / inicializar um atributo de uma classe
    private ClienteRepository repository;
 
    @Autowired
    private EnderecoClienteRepository enderecoClienteRepository;
 
-   @Transactional 
+   @Transactional // criar um bloco transacional 
    public Cliente save(Cliente cliente) {
 
        cliente.setHabilitado(Boolean.TRUE);
@@ -30,15 +31,15 @@ public class ClienteService {
 
    public List<Cliente> listarTodos() {
   
-        return repository.findAll();
+        return repository.findAll();// select * from cliente
     }
 
     public Cliente obterPorID(Long id) {
 
-        return repository.findById(id).get(); 
+        return repository.findById(id).get(); // select * from cliente wher id =?
     }
 
-    @Transactional 
+    @Transactional // confirma as alteração no final do banco 
    public void update(Long id, Cliente clienteAlterado) {
 
       Cliente cliente = repository.findById(id).get();
@@ -65,13 +66,13 @@ public class ClienteService {
 
        Cliente cliente = this.obterPorID(clienteId);
       
-       
+       //Primeiro salva o EnderecoCliente:
 
        endereco.setCliente(cliente);
        endereco.setHabilitado(Boolean.TRUE);
        enderecoClienteRepository.save(endereco);
       
-      
+       //Depois acrescenta o endereço criado ao cliente e atualiza o cliente:
 
        List<EnderecoCliente> listaEnderecoCliente = cliente.getEnderecos();
       

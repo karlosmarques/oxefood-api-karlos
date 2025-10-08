@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import br.com.ifpe.oxefood.util.entity.EntidadeAuditavel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +23,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Produto extends EntidadeAuditavel {
+
+
+    @ManyToOne
+   private CategoriaProduto categoria;
 
     @Column
     private String titulo;

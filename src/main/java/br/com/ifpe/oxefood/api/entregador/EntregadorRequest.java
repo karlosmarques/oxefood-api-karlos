@@ -46,7 +46,7 @@ public class EntregadorRequest {
             .rg(rg)
             .foneCelular(foneCelular)
             .foneFixo(foneFixo)
-            .qtdEntregas(qtdEntregas)
+            .qtdEntregasRealizadas(qtdEntregas)
             .valorFrete(valorFrete)
             .rua(rua)
             .numero(numero)
