@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/cidade")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class CidadeController {
     
     @Autowired

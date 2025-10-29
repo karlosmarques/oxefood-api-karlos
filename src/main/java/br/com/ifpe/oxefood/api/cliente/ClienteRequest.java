@@ -6,6 +6,7 @@ import java.util.Arrays;
 import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -22,6 +23,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@CrossOrigin
 public class ClienteRequest {
 
   @NotBlank(message = "O e-mail é de preenchimento obrigatório")

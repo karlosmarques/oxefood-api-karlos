@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.ifpe</groupId>
-	<artifactId>oxefood-api-henri</artifactId>
+	<artifactId>oxefood-api-karlos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>oxefood-api-henri</name>
+	<name>oxefood-api-karlos</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

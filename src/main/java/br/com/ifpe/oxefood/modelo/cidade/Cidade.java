@@ -3,6 +3,7 @@ package br.com.ifpe.oxefood.modelo.cidade;
 import java.time.LocalDate;
 
 import org.hibernate.annotations.SQLRestriction;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import br.com.ifpe.oxefood.modelo.estado.Estado;
 import br.com.ifpe.oxefood.util.entity.EntidadeAuditavel;
@@ -25,6 +26,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@CrossOrigin
 public class Cidade extends EntidadeAuditavel{
     
     @ManyToOne

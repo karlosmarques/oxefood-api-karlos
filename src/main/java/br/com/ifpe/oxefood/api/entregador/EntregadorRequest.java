@@ -24,7 +24,7 @@ public class EntregadorRequest {
     @Length(max = 100, message = "O Nome deverá ter no máximo {max} caracteres")
     private String nome;
 
-    @CPF(message = "o campo 'CPF' deve ter um valor válido")
+ 
     private String cpf;
 
     private String rg;
@@ -38,7 +38,7 @@ public class EntregadorRequest {
 
     private Integer qtdEntregasRealizadas;
 
-    @NotBlank(message = "O campo 'Valor do Frete' é de preenchimento obrigatório")
+
     private Double valorFrete;
 
     private String enderecoRua;
